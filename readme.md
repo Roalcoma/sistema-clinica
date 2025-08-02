@@ -88,7 +88,7 @@ A continuación se describen los endpoints principales del API.
 
 * **Tu Nombre**
 * **GitHub:** [@Roalcoma](https://github.com/Roalcoma)
-* **LinkedIn:** [Rodrigo Cova](www.linkedin.com/in/rodrigo-cova-6a879a14b)
+* **LinkedIn:** [Rodrigo Cova](https://www.linkedin.com/in/rodrigo-cova-6a879a14b)
 
 ---
 
