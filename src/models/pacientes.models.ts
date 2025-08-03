@@ -24,7 +24,7 @@ export class pacientesModels {
             console.error('Error al obtener pacientes:', error);
             throw error;
         } finally {
-            this.db.closePool();
+            this.db.poolInstance.releaseConnection(connection);
         }
     }
     
@@ -40,7 +40,7 @@ export class pacientesModels {
             console.error('Error al crear paciente:', error);
             throw error;
         } finally {
-            this.db.closePool();
+            this.db.poolInstance.releaseConnection(connection);
         }
     }
 
@@ -54,7 +54,7 @@ export class pacientesModels {
             console.error('Error al actualizar paciente:', error);
             throw error;
         } finally {
-            this.db.closePool();
+            this.db.poolInstance.releaseConnection(connection);
         }
     }
 
@@ -68,7 +68,7 @@ export class pacientesModels {
             console.error('Error al eliminar paciente:', error);
             throw error;
         } finally {
-            this.db.closePool();
+            this.db.poolInstance.releaseConnection(connection);
         }
     }
 

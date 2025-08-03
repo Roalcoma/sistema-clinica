@@ -8,6 +8,7 @@ import cors from 'cors';
 //import helmet from 'helmet'; // Para seguridad
 //import morgan from 'morgan'; // Para logging
 import { pacientesRouter } from './routers/pacientes.routers';
+import { platillosRouter } from './routers/platillos.routers'; // Asegúrate de importar platillosRouter
 
 const app = express();
 // Usa el puerto del .env o el 3000 por defecto
@@ -28,6 +29,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 
 // Rutas
 app.use('/api/pacientes', pacientesRouter);
+app.use('/api/platillos', platillosRouter); // Asegúrate de importar platillosRouter
 
 
 // Listener en el puerto especificado

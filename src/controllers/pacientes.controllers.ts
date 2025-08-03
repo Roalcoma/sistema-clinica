@@ -19,15 +19,15 @@ export class PacientesControllers {
 
     async getPacientes(req: Request, res: Response): Promise<void> {
         try {
-            let {idPaciente} = req.query;
+            let {id_paciente} = req.query;
             
             let pacientes;
 
-            if(!idPaciente) {
+            if(!id_paciente) {
                 pacientes = await this.models.getPacientes() // Si no se proporciona, lo dejamos como undefined
             } else {
-                // Convertimos el idPaciente a número si es que se proporciona
-                pacientes = await this.models.getPacientes(Number(idPaciente));
+                // Convertimos el id_paciente a número si es que se proporciona
+                pacientes = await this.models.getPacientes(Number(id_paciente));
             }
             
             // Aquí iría la lógica para obtener los pacientes de la base de datos
@@ -67,21 +67,21 @@ export class PacientesControllers {
 
     async putPacientes(req: Request, res: Response): Promise<void> {
         try {
-            const { idPaciente } = req.query;
+            const { id_paciente } = req.body;
             const pacienteData = req.body;
 
-            if (!idPaciente || !pacienteData) {
+            if (!id_paciente || !pacienteData) {
                 res.status(400).json({ error: 'ID del paciente y datos son requeridos.' });
                 return;
             }
 
-            const accion = await this.models.putPacientes(Number(idPaciente), pacienteData);
+            const accion = await this.models.putPacientes(Number(id_paciente), pacienteData);
 
             console.log('resultado:', accion);
 
             res.status(200).json({
                 message: 'Paciente actualizado correctamente.',
-                id: idPaciente,
+                id: id_paciente,
                 data: pacienteData
             });
 
@@ -95,16 +95,16 @@ export class PacientesControllers {
     async softDeletePacientes(req: Request, res: Response): Promise<void> {
         console.log('Iniciando softDeletePacientes...');
         try {
-            const { idPaciente } = req.query;
+            const { id_paciente } = req.query;
 
-            console.log('ID del paciente a eliminar:', idPaciente);
+            console.log('ID del paciente a eliminar:', id_paciente);
 
-            if (!idPaciente) {
+            if (!id_paciente) {
                 res.status(400).json({ error: 'ID del paciente es requerido.' });
                 return;
             }
 
-            const accion = await this.models.softDeletePacientes(Number(idPaciente));
+            const accion = await this.models.softDeletePacientes(Number(id_paciente));
 
             console.log('resultado:', accion);
 
@@ -115,7 +115,7 @@ export class PacientesControllers {
 
             res.status(200).json({
                 message: 'Paciente eliminado correctamente.',
-                id: idPaciente,
+                id: id_paciente,
                 data: accion
             });
 
